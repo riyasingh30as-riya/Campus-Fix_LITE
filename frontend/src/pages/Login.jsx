@@ -10,15 +10,6 @@ export default function Login() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const demoEmail = 'demo.admin@campusfix.edu';
-  const demoPassword = 'CampusFix123!';
-
-  function useDemoLogin() {
-    setEmail(demoEmail);
-    setPassword(demoPassword);
-    setError('');
-  }
-
   async function handleSubmit(e) {
     e.preventDefault();
     setError('');
@@ -51,16 +42,6 @@ export default function Login() {
           <h2>Sign in</h2>
           <p className="subtitle">Students and admins use the same login.</p>
           {error && <div className="error-banner">{error}</div>}
-          <div className="demo-login">
-            <div>
-              <strong>Demo admin access</strong>
-              <span>{demoEmail}</span>
-              <span>{demoPassword}</span>
-            </div>
-            <button type="button" className="btn btn-ghost" onClick={useDemoLogin}>
-              Use demo login
-            </button>
-          </div>
           <form onSubmit={handleSubmit}>
             <div className="field">
               <label>Email</label>
