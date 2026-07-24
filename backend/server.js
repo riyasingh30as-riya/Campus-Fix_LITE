@@ -9,6 +9,7 @@ const complaintRoutes = require('./routes/complaintRoutes');
 const User = require('./models/User');
 
 const app = express();
+process.env.JWT_SECRET = process.env.JWT_SECRET || 'campusfix-dev-secret';
 
 const configuredOrigins = (process.env.CLIENT_ORIGIN || 'http://localhost:5173,http://127.0.0.1:5173')
   .split(',')

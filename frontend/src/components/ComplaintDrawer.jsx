@@ -4,7 +4,7 @@ import { ticketId, formatTime } from './TicketBoard';
 import api from '../api/axios';
 
 const STATUS_FLOW = ['Pending', 'Approved', 'In Progress', 'Resolved', 'Rejected'];
-const API_ORIGIN = (import.meta.env.VITE_API_URL || 'http://localhost:5000/api').replace(/\/api$/, '');
+const API_ORIGIN = (import.meta.env.VITE_API_URL || 'http://localhost:5050/api').replace(/\/api$/, '');
 
 export default function ComplaintDrawer({ complaint, isAdmin, onClose, onUpdated }) {
   const [status, setStatus] = useState(complaint.status);

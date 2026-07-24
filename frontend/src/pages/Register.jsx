@@ -11,6 +11,7 @@ export default function Register() {
     password: '',
     rollNumber: '',
     hostel: '',
+    phone: '',
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -87,6 +88,14 @@ export default function Register() {
                 <label>Hostel</label>
                 <input value={form.hostel} onChange={(e) => update('hostel', e.target.value)} />
               </div>
+            </div>
+            <div className="field">
+              <label>Phone number</label>
+              <input
+                value={form.phone}
+                onChange={(e) => update('phone', e.target.value)}
+                placeholder="Optional"
+              />
             </div>
             <button className="btn btn-primary btn-block" disabled={loading}>
               {loading ? 'Creating account…' : 'Create account'}

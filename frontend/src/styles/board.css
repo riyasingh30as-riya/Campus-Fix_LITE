@@ -48,7 +48,9 @@ body,
 
 body {
   margin: 0;
-  background: var(--paper);
+  background:
+    radial-gradient(circle at top left, rgba(47, 102, 144, 0.12), transparent 30%),
+    var(--paper);
   color: var(--ink);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
@@ -71,12 +73,13 @@ button {
 }
 
 .topbar {
-  background: var(--navy);
+  background: linear-gradient(90deg, var(--navy-deep), var(--navy));
   color: #fff;
-  padding: 14px 28px;
+  padding: 16px 28px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 0 8px 24px rgba(19, 27, 46, 0.18);
 }
 
 .topbar__brand {
@@ -141,6 +144,11 @@ button {
 
 .page-header {
   margin-bottom: 24px;
+  padding: 20px 22px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(216, 218, 225, 0.8);
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
 }
 
 .page-header__eyebrow {
@@ -169,8 +177,8 @@ button {
 .panel {
   background: var(--panel);
   border: 1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-card);
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(19, 27, 46, 0.08);
 }
 
 .panel--pad {
@@ -263,10 +271,16 @@ button {
   gap: 12px;
   padding: 12px;
   margin-bottom: 18px;
-  background: var(--wire-blue-bg);
+  background: linear-gradient(90deg, var(--wire-blue-bg), #f5f8fc);
   border: 1px solid #c4d6e3;
-  border-radius: var(--radius);
+  border-radius: 14px;
   font-size: 0.78rem;
+}
+
+.demo-login__actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .demo-login div {
@@ -343,17 +357,23 @@ button {
   justify-content: center;
   gap: 6px;
   padding: 10px 18px;
-  border-radius: var(--radius);
+  border-radius: 999px;
   border: none;
   font-size: 0.92rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   font-family: var(--font-body);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
 }
 
 .btn-primary {
-  background: var(--navy);
+  background: linear-gradient(90deg, var(--navy), var(--wire-blue));
   color: #fff;
+  box-shadow: 0 10px 20px rgba(30, 42, 68, 0.16);
 }
 .btn-primary:hover {
   background: var(--navy-deep);
@@ -368,7 +388,7 @@ button {
 }
 
 .btn-ghost {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.9);
   border: 1px solid var(--line-strong);
   color: var(--ink);
 }

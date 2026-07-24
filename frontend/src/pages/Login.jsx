@@ -24,6 +24,35 @@ export default function Login() {
     }
   }
 
+  async function handleDemoLogin(role) {
+    const demoCredentials = {
+      admin: {
+        email: 'demo.admin@campusfix.edu',
+        password: 'CampusFix123!',
+      },
+      student: {
+        email: 'student@example.com',
+        password: 'Password123!',
+      },
+    };
+
+    const target = demoCredentials[role];
+    if (!target) return;
+
+    setEmail(target.email);
+    setPassword(target.password);
+    setError('');
+    setLoading(true);
+    try {
+      const user = await login(target.email, target.password);
+      navigate(user.role === 'admin' ? '/admin' : '/dashboard');
+    } catch (err) {
+      setError(err.response?.data?.message || 'Demo login failed.');
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <div className="auth-screen">
       <div className="auth-screen__hero">
@@ -41,6 +70,20 @@ export default function Login() {
         <div className="auth-card panel panel--pad">
           <h2>Sign in</h2>
           <p className="subtitle">Students and admins use the same login.</p>
+          <div className="demo-login">
+            <div>
+              <strong>Quick access</strong>
+              <span>Try a demo student or admin account.</span>
+            </div>
+            <div className="demo-login__actions">
+              <button type="button" className="btn btn-ghost" onClick={() => handleDemoLogin('student')}>
+                Student demo
+              </button>
+              <button type="button" className="btn btn-primary" onClick={() => handleDemoLogin('admin')}>
+                Admin demo
+              </button>
+            </div>
+          </div>
           {error && <div className="error-banner">{error}</div>}
           <form onSubmit={handleSubmit}>
             <div className="field">
